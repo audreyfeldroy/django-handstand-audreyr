@@ -1,0 +1,4 @@
+/* Leave space at top for nav bar */
+body {
+    padding-top: 60px;
+}

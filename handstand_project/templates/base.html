@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+{% block title %}{% endblock %}
+</title>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="{% url home %}">Handstand</a>
+      <ul class="nav">
+        <li><a href="{% url home %}">Home</a></li>
+        <li><a href="{% url about %}">About</a></li>
+        <li><a href="{% url profile_list %}">All Profiles</a></li>
+
+    {% if request.user.is_authenticated %}
+        <li><a href="{% url profile_detail request.user.username %}">My Profile</a></li>
+        <li><a href="{% url dashboard %}">Dashboard</a></li>
+        <li><a href="{% url logout %}">Log out</a></li>
+    {% else %}
+        <li><a href="{% url login %}">Log in</a></li>
+    {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span16">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

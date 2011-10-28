@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ profile.fullname }} : Dashboard
+{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p>Things you can do on this site:</p>
+
+<ul>
+<li><a href="{% url profile_detail request.user.username %}">View</a> your profile</li>
+<li><a href="{% url profile_edit %}">Edit</a> your profile</li>
+<li><a href="{% url associate %}">Associate</a> one account with another</li>
+<li><a href="{% url logout %}">Log out</a></li>
+</ul>
+
+{% endblock %}
+

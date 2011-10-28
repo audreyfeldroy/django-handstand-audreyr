@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ profile.fullname }} : Profile
+{% endblock %}
+
+{% block content %}
+<h1>Edit your profile</h1>
+
+<form action="{% url profile_edit %}" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="clearfix">
+        <label for="disabledInput">Username</label>
+        <div class="input">
+            {{ form.username.errors }}
+            {{ form.username }}
+            <span class="help-inline">By default, this is your Twitter or Facebook username.</span>
+        </div>
+    </div>
+    <div class="clearfix">
+        <label for="xlInput">Full name</label>
+        <div class="input">
+            {{ form.fullname.errors }}
+            {{ form.fullname }}
+        </div>
+    </div>
+    <div class="clearfix">
+        <label for="xlInput">Email</label>
+        <div class="input">
+            {{ form.email.errors }}
+            {{ form.email }}
+            <span class="help-inline">Recommended</span>
+        </div>
+    </div>
+    <div class="clearfix">
+        <label for="xlInput">Email preference</label>
+        <div class="input">
+            {{ form.email_preference.errors }}
+            {{ form.email_preference }}
+            <span class="help-inline">Your email address is never shared with anyone. We promise!</span>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <label for="disabledInput">Twitter username</label>
+        <div class="input">
+            {{ form.twitter_username.errors }}
+            {{ form.twitter_username }}
+            <span class="help-inline">Associate your Twitter account <a href="{% url associate %}">here</a></span>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <label for="disabledInput">Facebook username</label>
+        <div class="input">
+            {{ form.fb_username.errors }}
+            {{ form.fb_username }}
+            <span class="help-inline">Associate your Facebook account <a href="{% url associate %}">here</a></span>
+        </div>
+    </div>
+    <div class="actions">
+        <input type="submit" class="btn primary" value="Save changes">
+    </div>
+</form>
+{% endblock %}
+

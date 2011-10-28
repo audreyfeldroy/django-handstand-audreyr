@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Profiles
+{% endblock %}
+
+{% block content %}
+<h2>All Profiles</h2>
+
+{% if latest_profile_list %}
+    <ul>
+    {% for profile in latest_profile_list %}
+        <li><a href="{% url profile_detail profile.username %}">{{ profile.username }}</a> / {{ profile.fullname }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No profiles are available.</p>
+{% endif %}
+{% endblock %}

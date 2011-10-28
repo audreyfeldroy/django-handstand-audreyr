@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+        <h2>Log in</h2>
+        {% if request.user.is_authenticated %}
+            <p>You are already logged in.</p>
+        {% else %}
+            <p>Use any of the following to log in:</p>
+            <p><a class="btn large primary" href="{% url socialauth_begin 'twitter' %}">Log in</a> with your Twitter account</p>
+            <p><a class="btn large primary" href="{% url socialauth_begin 'facebook' %}">Log in</a> with your Facebook account</p>
+        {% endif %}
+{% endblock %}
