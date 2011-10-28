@@ -11,8 +11,6 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-INTERNAL_IPS = ('127.0.0.1','75.84.200.96')
-
 MANAGERS = ADMINS
 
 DATABASES = {
