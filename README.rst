@@ -13,4 +13,4 @@ My personal mashup of:
 * django-startcbv, to create quick working prototypes of whatever apps I need
 * django-extensions, to give me shell_plus and whatever else comes with it
 
-This is likely to be unstable, since it's meant for my own personal use.  Consider it sample code rather than using it outright.  Beware, parts of it could even be dangerous ;)
+This is likely to be unstable, since it's meant for my own personal use.  Beware, parts of it could even be dangerous ;)
