@@ -179,11 +179,6 @@ FACEBOOK_API_SECRET          = 'DEFINE-ME-IN-LOCAL-SETTINGS'
 LOGIN_URL          = '/login/'
 LOGIN_REDIRECT_URL = '/'
 #LOGIN_ERROR_URL    = '/login-error/'
-SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
-SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'associate_complete'
-SOCIAL_AUTH_ASSOCIATE_BY_MAIL = True
-SOCIAL_AUTH_EXTRA_DATA = True
-SOCIAL_AUTH_CHANGE_SIGNAL_ONLeY = True
 SOCIAL_AUTH_USERNAME_FIXER = lambda u: slugify(u)
 
 # local_settings.py can be used to override environment-specific settings
