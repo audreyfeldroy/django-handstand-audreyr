@@ -9,11 +9,11 @@
             <p>Logged in with the wrong account?  You can associate your other account here:</p>
 
             {% if not request.my_profile.twitter_username %}
-                <p><a class="btn large primary" href="{% url socialauth_begin 'twitter' %}">Associate this</a> with your Twitter account</p>
+                <p><a class="btn large primary" href="{% url socialauth_associate_begin 'twitter' %}">Associate this</a> with your Twitter account</p>
             {% endif %}
 
             {% if not request.my_profile.fb_username %}
-            <p><a class="btn large primary" href="{% url socialauth_begin 'facebook' %}">Associate this</a> with your Facebook account</p>
+            <p><a class="btn large primary" href="{% url socialauth_associate_begin 'facebook' %}">Associate this</a> with your Facebook account</p>
             {% endif %}
 
         {% else %}
