@@ -32,6 +32,7 @@ dev.db*
 *.log
 local_settings.py
 collected_static/
+dev_private.py
 
 # Local file cruft/auto-backups
 .DS_Store
