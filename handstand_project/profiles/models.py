@@ -25,5 +25,5 @@ class Profile(BaseModel):
     fb_username = models.CharField(_('Facebook username'), max_length=100, null=True, blank=True)
 
     def __unicode__(self):
-        return u'%s' % self.user.username
+        return u'%s' % self.username
 
