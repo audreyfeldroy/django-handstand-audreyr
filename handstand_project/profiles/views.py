@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext as _
 from django.views.generic import DetailView, ListView, UpdateView
 
@@ -15,16 +16,19 @@ from social_auth.backends.facebook import FacebookBackend
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 
+def user_update(new_username, new_fullname):
+    if not profile_instance.username:
+        profile_instance.username = slugify(new_username)
+    if not profile_instance.fullname:
+        profile_instance.fullname = new_fullname
+    profile_instance.save()
+    return True
 
 def twitter_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
     logging.debug(details)
-    if not profile_instance.username:
-        profile_instance.username = details['username']
-    if not profile_instance.fullname:
-        profile_instance.fullname = details['fullname']
     profile_instance.twitter_username = details['username']
-    profile_instance.save()
+    user_update(details['username'], details['fullname'])
     return True
 
 pre_update.connect(twitter_user_update, sender=TwitterBackend)
@@ -32,12 +36,8 @@ pre_update.connect(twitter_user_update, sender=TwitterBackend)
 def facebook_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
     logging.debug(details)
-    if not profile_instance.username:
-        profile_instance.username = details['username']
-    if not profile_instance.fullname:
-        profile_instance.fullname = details['fullname']
     profile_instance.fb_username = details['username']
-    profile_instance.save()
+    user_update(details['username'], details['fullname'])
     return True
 
 pre_update.connect(facebook_user_update, sender=FacebookBackend)
