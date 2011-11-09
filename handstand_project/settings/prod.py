@@ -21,3 +21,22 @@ EMAIL_PORT = 587
 EMAIL_SUBJECT_PREFIX = '[Your Site]'
 EMAIL_USE_TLS = True
 SERVER_EMAIL = 'someone@yoursite.com'
+
+# Logging: Send an email to the site admins on every HTTP 500 error.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
