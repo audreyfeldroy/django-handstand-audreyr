@@ -16,7 +16,7 @@ from social_auth.backends.facebook import FacebookBackend
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 
-def user_update(new_username, new_fullname):
+def user_update(profile_instance, new_username, new_fullname):
     if not profile_instance.username:
         profile_instance.username = slugify(new_username)
     if not profile_instance.fullname:
@@ -28,7 +28,7 @@ def twitter_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
     logging.debug(details)
     profile_instance.twitter_username = details['username']
-    user_update(details['username'], details['fullname'])
+    user_update(profile_instance, details['username'], details['fullname'])
     return True
 
 pre_update.connect(twitter_user_update, sender=TwitterBackend)
@@ -37,7 +37,7 @@ def facebook_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
     logging.debug(details)
     profile_instance.fb_username = details['username']
-    user_update(details['username'], details['fullname'])
+    user_update(profile_instance, details['username'], details['fullname'])
     return True
 
 pre_update.connect(facebook_user_update, sender=FacebookBackend)
