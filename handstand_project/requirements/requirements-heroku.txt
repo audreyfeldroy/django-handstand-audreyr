@@ -1,0 +1,5 @@
+--requirement=requirements.txt
+
+# I like installing these systemwide for local dev. But Heroku wants them in the requirements file.
+lxml==2.3.1
+psycopg2==2.4.2

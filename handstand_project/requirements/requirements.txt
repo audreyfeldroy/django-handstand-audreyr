@@ -6,11 +6,8 @@ django-debug-toolbar==0.8.5
 South==0.7.3
 
 # text editing
-lxml==2.3.1
 django-wysiwyg==0.3.1
 
 # coverage
 django-coverage==1.2.1
 coverage==3.4
-
-psycopg2==2.4.2
