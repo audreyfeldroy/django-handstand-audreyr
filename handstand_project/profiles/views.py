@@ -1,5 +1,3 @@
-import logging
-
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
@@ -26,7 +24,6 @@ def user_update(profile_instance, new_username, new_fullname):
 
 def twitter_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
-    logging.debug(details)
     profile_instance.twitter_username = details['username']
     user_update(profile_instance, details['username'], details['fullname'])
     return True
@@ -35,7 +32,6 @@ pre_update.connect(twitter_user_update, sender=TwitterBackend)
 
 def facebook_user_update(sender, user, response, details, **kwargs):
     profile_instance, created = Profile.objects.get_or_create(user=user)
-    logging.debug(details)
     profile_instance.fb_username = details['username']
     user_update(profile_instance, details['username'], details['fullname'])
     return True
@@ -44,7 +40,6 @@ pre_update.connect(facebook_user_update, sender=FacebookBackend)
 
 
 class ProfileListView(ListView):
-    logging.debug("start of ProfileListView")
     context_object_name = 'latest_profile_list'
     template_name = 'profiles/profile_list.html'
     queryset = Profile.objects.order_by('-created')
