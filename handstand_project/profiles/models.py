@@ -24,6 +24,9 @@ class Profile(BaseModel):
     twitter_username = models.CharField(_('Twitter username'), max_length=100, null=True, blank=True)
     fb_username = models.CharField(_('Facebook username'), max_length=100, null=True, blank=True)
 
+    class Meta:
+        ordering = ['fullname',]
+
     def __unicode__(self):
         return u'%s' % self.username
 
