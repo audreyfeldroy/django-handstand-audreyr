@@ -24,6 +24,7 @@ FACEBOOK_API_SECRET          = 'DEFINE-ME-HERE--DO-NOT-CHECK-IN-PUBLICLY'
 
 
 # For django-debug-toolbar
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar',)
 INTERNAL_IPS = ('127.0.0.1', 'YOUR-IP-ADDRESS-HERE')
 
