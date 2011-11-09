@@ -126,7 +126,6 @@ INSTALLED_APPS = (
     'social_auth',
     'profiles',
     'django_extensions',
-    'debug_toolbar',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -172,18 +171,9 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', 'facebook',)
-TWITTER_CONSUMER_KEY         = 'DEFINE-ME-IN-LOCAL-SETTINGS'
-TWITTER_CONSUMER_SECRET      = 'DEFINE-ME-IN-LOCAL-SETTINGS'
-FACEBOOK_APP_ID              = 'DEFINE-ME-IN-LOCAL-SETTINGS'
-FACEBOOK_API_SECRET          = 'DEFINE-ME-IN-LOCAL-SETTINGS'
+# Don't forget to set TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, FACEBOOK_APP_ID, FACEBOOK_API_SECRET in dev.py
 LOGIN_URL          = '/login/'
 LOGIN_REDIRECT_URL = '/'
 #LOGIN_ERROR_URL    = '/login-error/'
 SOCIAL_AUTH_USERNAME_FIXER = lambda u: slugify(u)
 
-# local_settings.py can be used to override environment-specific settings
-# like database and email that differ between development and production.
-try:
-    from local_settings import *
-except ImportError:
-    pass
