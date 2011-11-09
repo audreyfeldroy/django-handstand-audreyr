@@ -40,9 +40,9 @@ pre_update.connect(facebook_user_update, sender=FacebookBackend)
 
 
 class ProfileListView(ListView):
-    context_object_name = 'latest_profile_list'
+    context_object_name = 'profile_list'
     template_name = 'profiles/profile_list.html'
-    queryset = Profile.objects.order_by('-created')
+    queryset = Profile.objects.order_by('-modified')
 
 class ProfileDetailView(DetailView):
     """ Shows the profile page for a user. """
