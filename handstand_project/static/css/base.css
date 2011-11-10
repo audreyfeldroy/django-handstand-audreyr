@@ -2,3 +2,23 @@
 body {
     padding-top: 60px;
 }
+
+a.fb-button {
+	background: url(../img/social_signin_buttons_icons/facebook_signin.png) no-repeat 0 0;
+	width: 150px;
+	height: 23px;
+	display: block;
+	text-indent: -9999px;
+}
+a.fb-button:hover { background-position: 0 -23px; }
+a.fb-button:active { background-position: 0 -46px; }
+
+a.twitter-button {
+	background: url(../img/social_signin_buttons_icons/twitter_signin.png) no-repeat 0 0;
+	width: 150px;
+	height: 23px;
+	display: block;
+	text-indent: -9999px;
+}
+a.twitter-button:hover { background-position: 0 -23px; }
+a.twitter-button:active { background-position: 0 -46px; }

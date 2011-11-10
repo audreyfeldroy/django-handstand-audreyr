@@ -3,12 +3,13 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %}
-        <h2>Log in</h2>
+        <h2>Sign in</h2>
         {% if request.user.is_authenticated %}
-            <p>You are already logged in.</p>
+            <p>You are already signed in.</p>
         {% else %}
-            <p>Use any of the following to log in:</p>
-            <p><a class="btn large primary" href="{% url socialauth_begin 'twitter' %}">Log in</a> with your Twitter account</p>
-            <p><a class="btn large primary" href="{% url socialauth_begin 'facebook' %}">Log in</a> with your Facebook account</p>
+            <p>We promise not to post to your Twitter or Facebook accounts without your explicit permission.</p>
+            <p>It's easy and free:</p>
+            <p><a class="twitter-button" href="{% url socialauth_begin 'twitter' %}">&nbsp;</a></p>
+            <p><a class="fb-button" href="{% url socialauth_begin 'facebook' %}">&nbsp;</a></p>
         {% endif %}
 {% endblock %}
