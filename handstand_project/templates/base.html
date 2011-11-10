@@ -20,13 +20,18 @@
         <li><a href="{% url profile_list %}">All Profiles</a></li>
 
     {% if request.user.is_authenticated %}
-        <li><a href="{% url profile_detail request.user.username %}">My Profile</a></li>
         <li><a href="{% url dashboard %}">Dashboard</a></li>
         <li><a href="{% url logout %}">Log out</a></li>
     {% else %}
         <li><a href="{% url login %}">Log in</a></li>
     {% endif %}
 
+      </ul>
+
+      <ul class="nav secondary-nav">
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url profile_detail request.user.username %}">{{ request.user.username }}</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>
