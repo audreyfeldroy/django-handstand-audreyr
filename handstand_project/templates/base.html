@@ -30,9 +30,8 @@
           <li class="dropdown" data-dropdown="dropdown"><a href="#" class="dropdown-toggle">{{ request.user.username }}</a>
               <ul class="dropdown-menu">
                 <li><a href="{% url profile_detail request.user.username %}">My profile</a>
-                <li><a href="{% url logout %}">Sign out</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
+                <li><a href="{% url logout %}">Sign out</a></li>
               </ul>
           </li>
         {% else %}
