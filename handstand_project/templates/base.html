@@ -6,6 +6,7 @@
 </title>
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
+<script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
 </head>
 
 <body>
@@ -21,16 +22,22 @@
 
     {% if request.user.is_authenticated %}
         <li><a href="{% url dashboard %}">Dashboard</a></li>
-        <li><a href="{% url logout %}">Log out</a></li>
-    {% else %}
-        <li><a href="{% url login %}">Log in</a></li>
     {% endif %}
 
       </ul>
 
       <ul class="nav secondary-nav">
         {% if request.user.is_authenticated %}
-          <li><a href="{% url profile_detail request.user.username %}">{{ request.user.username }}</a></li>
+          <li class="dropdown" data-dropdown="dropdown"><a href="#" class="dropdown-toggle">{{ request.user.username }}</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url profile_detail request.user.username %}">My profile</a>
+                <li><a href="{% url logout %}">Sign out</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+          </li>
+        {% else %}
+          <li><a href="{% url login %}">Sign in</a></li>
         {% endif %}
       </ul>
     </div>
@@ -45,5 +52,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(function() {
+  $('.topbar').dropdown()
+});
+</script>
 </body>
 </html>
