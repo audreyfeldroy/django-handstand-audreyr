@@ -101,7 +101,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
 )
 
-INSTALLED_APPS = (
+PREREQ_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -114,7 +114,25 @@ INSTALLED_APPS = (
     'social_auth',
     'profiles',
     'django_extensions',
+    'django_coverage',
 )
+
+PROJECT_APPS = ()
+
+if PROJECT_APPS:
+    INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS
+else:
+    INSTALLED_APPS = PREREQ_APPS
+
+########## BEGIN TESTRUNNER CONFIGURATION
+TEST_RUNNER = 'testrunner.OurCoverageRunner'
+COVERAGE_MODULE_EXCLUDES = [
+    'tests$', 'settings$', 'urls$', 'locale$','admin',
+    'migrations', 'fixtures','debug_toolbar','djkombu',
+]
+COVERAGE_MODULE_EXCLUDES += PREREQ_APPS
+COVERAGE_REPORT_HTML_OUTPUT_DIR = "coverage"
+########## END TESTRUNNER CONFIGURATION
 
 AUTH_PROFILE_MODULE = "profiles.Profile"
 

@@ -25,7 +25,7 @@ class BaseTestCase(TestCase):
         """
 usage::
 
-    from core.test_utils import BaseTestCase
+    from core.tests_utils import BaseTestCase
     class MyTest(BaseTestCase):
 
         def setUp(self):
